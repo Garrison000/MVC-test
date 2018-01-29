@@ -10,127 +10,107 @@ using Aperture_Lab.Models;
 
 namespace Aperture_Lab.Controllers
 {
-    public class ParticipantsController : Controller
+    public class ManagersController : Controller
     {
         private LabDBContext db = new LabDBContext();
 
-        // GET: Participants
+        // GET: Managers
         public ActionResult Index()
         {
-            return View(db.Participants.ToList());
+            return View(db.Managers.ToList());
         }
 
-        // GET: Participants/Details/5
+        // GET: Managers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Participant participant = db.Participants.Find(id);
-            if (participant == null)
+            Manager manager = db.Managers.Find(id);
+            if (manager == null)
             {
                 return HttpNotFound();
             }
-            return View(participant);
+            return View(manager);
         }
 
-        // GET: Participants/Create
+        // GET: Managers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Participants/Create
+        // POST: Managers/Create
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Age")] Participant participant)
+        public ActionResult Create([Bind(Include = "ID,Name")] Manager manager)
         {
             if (ModelState.IsValid)
             {
-                db.Participants.Add(participant);
+                db.Managers.Add(manager);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(participant);
+            return View(manager);
         }
 
-        // GET: Participants/Edit/5
+        // GET: Managers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Participant participant = db.Participants.Find(id);
-            
-            if (participant == null)
+            Manager manager = db.Managers.Find(id);
+            if (manager == null)
             {
                 return HttpNotFound();
             }
-            return View(participant);
+            return View(manager);
         }
 
-        // POST: Participants/Edit/5
+        // POST: Managers/Edit/5
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Age")] Participant participant)
+        public ActionResult Edit([Bind(Include = "ID,Name")] Manager manager)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(participant).State = EntityState.Modified;
+                db.Entry(manager).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(participant);
+            return View(manager);
         }
 
-        // GET: Participants/Delete/5
+        // GET: Managers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Participant participant = db.Participants.Find(id);
-
-            if (participant == null)
+            Manager manager = db.Managers.Find(id);
+            if (manager == null)
             {
                 return HttpNotFound();
             }
-            return View(participant);
+            return View(manager);
         }
 
-        // POST: Participants/Delete/5
+        // POST: Managers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Participant participant = db.Participants.Find(id);
-            db.Participants.Remove(participant);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult AssignManager(int id)
-        {
-            Participant participant = db.Participants.FirstOrDefault(o => o.ID==id);
-            List<Manager> managers = db.Managers.ToList();
-            return View(managers);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AssignManager(AssignViewModel model)
-        {
-            Manager m = db.Managers.Find(model.Managerid);
-            Participant p = db.Participants.Find(model.Participantid);
-            p.Manager = m;
+            Manager manager = db.Managers.Find(id);
+            db.Managers.Remove(manager);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

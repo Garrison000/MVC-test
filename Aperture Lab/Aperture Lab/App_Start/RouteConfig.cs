@@ -18,6 +18,12 @@ namespace Aperture_Lab
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Lab", action = "Welcome", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Route2",
+                url: "{controller}/{action}/{age}/{id}",
+                defaults: new { controller = "Lab", action = "Welcome", id = UrlParameter.Optional }
+            );
+
         }
     }
 }

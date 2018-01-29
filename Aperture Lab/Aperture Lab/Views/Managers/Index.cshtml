@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Aperture_Lab.Models.Participant>
+﻿@model IEnumerable<Aperture_Lab.Models.Manager>
 
 @{
     ViewBag.Title = "Index";
@@ -14,9 +14,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Age)
-        </th>
         <th></th>
     </tr>
 
@@ -26,16 +23,9 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Manager.Name)
-        </td>
-        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            @Html.ActionLink("Assign", "AssignManager", new { id = item.ID })
         </td>
     </tr>
 }

@@ -150,15 +150,25 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LabController.cs" />
+    <Compile Include="Controllers\ManagersController.cs" />
     <Compile Include="Controllers\ParticipantsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801281205078_Init.cs" />
-    <Compile Include="Migrations\201801281205078_Init.Designer.cs">
-      <DependentUpon>201801281205078_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201801281444267_init.cs" />
+    <Compile Include="Migrations\201801281444267_init.Designer.cs">
+      <DependentUpon>201801281444267_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801281448451_addManager.cs" />
+    <Compile Include="Migrations\201801281448451_addManager.Designer.cs">
+      <DependentUpon>201801281448451_addManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801281452554_addRelationship.cs" />
+    <Compile Include="Migrations\201801281452554_addRelationship.Designer.cs">
+      <DependentUpon>201801281452554_addRelationship.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AssignViewModel.cs" />
     <Compile Include="Models\Participant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -210,6 +220,12 @@
     <Content Include="Views\Participants\Details.cshtml" />
     <Content Include="Views\Participants\Edit.cshtml" />
     <Content Include="Views\Participants\Index.cshtml" />
+    <Content Include="Views\Managers\Create.cshtml" />
+    <Content Include="Views\Managers\Delete.cshtml" />
+    <Content Include="Views\Managers\Details.cshtml" />
+    <Content Include="Views\Managers\Edit.cshtml" />
+    <Content Include="Views\Managers\Index.cshtml" />
+    <Content Include="Views\Participants\Assign.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -225,8 +241,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801281205078_Init.resx">
-      <DependentUpon>201801281205078_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801281444267_init.resx">
+      <DependentUpon>201801281444267_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801281448451_addManager.resx">
+      <DependentUpon>201801281448451_addManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801281452554_addRelationship.resx">
+      <DependentUpon>201801281452554_addRelationship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
